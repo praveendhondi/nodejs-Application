@@ -1,0 +1,7 @@
+Ports is called security groups
+ports supports only allow rules
+Return traffic is automatically allowed
+apply on the instance only
+in ports small no have high priority
+for security groups outbound ports are open by default
+

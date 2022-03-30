@@ -1,0 +1,106 @@
+
+
+docker compose.yml
+
+version: "3.7"
+services
+app
+image: nexus dependencies
+deploy:
+restart-policy
+condition: on failure
+max-attempts:3
+windows: 120s
+volumes
+   -/home/jioapp/log/
+     ports
+	 -8080:8080
+	 working_dir/apps
+	 
+	                                         or
+Dockerfile
+
+FROM devopsartifact...
+ADD target/restful-web services
+CMD ("java.xms256m")
+expose 8080
+                                              or
+
+version: "3"
+services:
+nodejs
+image:
+restart: 'unless stoped"
+ports:
+logging:
+driver
+options:
+Max size 100m
+file 3
+                                             or
+
+
+vi compose.yml
+
+---
+Version: '3'
+services:
+nodejs
+image: nodejs
+ports:
+  -3000:3000
+  
+mongodb
+image: data/db
+ports:
+   27017:27017
+links:
+data/db
+mongodb
+
+
+mydb
+image: mysql
+ -ports:
+    3306:3306
+environment:
+mysql_Root_password: ....
+
+...
+
+docker-compose up -d
+docker container ls
+
+
+
+
+
+
+  
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+version: '3'
+services:
+my-mongoDB:
+image: mongo:latest
+volumes:
+- db-data:/data/db
+- mongo-config:/data/configdb
+ 
+volumes:
+db-data:
+mongo-config:

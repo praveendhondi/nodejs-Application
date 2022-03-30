@@ -1,0 +1,11 @@
+TMP_ARG="$"
+ENVNAME="$(TMP_ARG:-DEV)"
+echo building for $ENVNAME
+
+ng build -t nodejs -f Dockerfile.local
+
+if [$ -gt]
+then
+echo "pushing to remote repo";
+docker tag image
+docker pushing image

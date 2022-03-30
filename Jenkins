@@ -1,0 +1,145 @@
+Once Add Dockerfile
+git init
+git add
+git commit "commit"
+git remote add origin URl
+git push
+go to setting in the github
+go to webhooks
+Add webhooks
+localhost:8080
+
+go to Jenkins
+manage plugin
+install Dockerfile
+Github
+Nodejs
+pipeline plugin
+ go to available in jnekins
+ install plugin
+ 
+ 
+ create a new job for creating 
+ freestyle
+ click ok
+ click on Github project and source code
+ select Git
+ Provide URL
+ Branch Name ...
+ 
+ select Build Triggers section
+ check the github trigger Git scm polling
+ Go to Build Environment
+ Provise node& npm bin/folder path
+ nodejs application save and Apply
+ 
+ Go to Globsltool
+ configuration
+ look for nodejs
+ install the version
+ save and apply
+ 
+ Go to build section
+ 
+Add Build section
+Add build step
+execute shell
+npm instll
+npm test
+
+
+
+CD
+
+goto Dockerhub account
+create repo
+To integrate dockerhub to Jenkins
+install plugin
+manage jenkins
+manage credentials system
+Global credentials
+Go to system
+credentials
+Add Dockerhub credentials
+
+
+
+create new Job
+add newitiam
+freestyle
+Ok
+Go to General section
+Github project
+go to Build trigger
+slect after other Prject 
+docker-intergate
+select trigger
+In the pipeline section we will section we will creating script to create docker image
+deploy
+save and Apply
+
+
+
+pipeline {
+    environment {
+    registry = "naistangz/docker_automation"
+    registryCredential = 'dockerhub'
+    dockerImage = ''
+    }
+
+    agent any
+    stages {
+            stage('Cloning our Git') {
+                steps {
+                git 'git@github.com:naistangz/Docker_Jenkins_Pipeline.git'
+                }
+            }
+
+            stage('Building Docker Image') {
+                steps {
+                    script {
+                        dockerImage = docker.build registry + ":$BUILD_NUMBER"
+                    }
+                }
+            }
+
+            stage('Deploying Docker Image to Dockerhub') {
+                steps {
+                    script {
+                        docker.withRegistry('', registryCredential) {
+                        dockerImage.push()
+                        }
+                    }
+                }
+            }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,82 @@
+Job: CI-stage
+Dependencies: set_build-parameter
+Pool:
+  name: Buildagent
+  workspace
+  npm install
+condition: dependencies.set_build-parameter.output("stagetype.set_build-parameterCI]'true')
+steps
+ -templates
+ 
+ JOB: JOB-Release
+ dependiences:
+ set_build-parameter
+ JOB_CI
+ Pool
+ name:Buildagent
+ condition: dependencies-set_build-parameters:stength set_build-parameter"release]'true
+ steps
+ templates: node-release.add.tag
+ 
+ 
+JOB Sonar
+dependencies:
+set_build-parameter
+ci-stage
+pool:
+name 'buildagent'
+condition'dependencies-set_build-parameter-output('stagetype.set_build-parameter']'true
+steps
+-templates: node-sonar
+
+task: nodejs
+display:'nodejs'
+http://proxynodejs.nexus.ji...
+https://proxynodejs.nexus.ji..
+npm install
+
+
+
+
+
+task
+displayname: "copyfiles to artifactstagingdirectory"
+input:
+sourcefolder: deployment/profiles
+content: application.properties
+targetfolder: "$(build.artifactstagingdirectory)"
+
+Task: copyfiles
+input:
+content:('**yml")
+targetfolder: '$(build.artifactstagingdirectory)'
+
+
+task: Docker
+displayname: buildpush
+input:
+containerregistry: "..."'
+repository: "....(build.repository.same)
+Dockerfile: "Dockerfile"
+displayname: builddockerimage
+
+task: publish
+inputs:
+pathtopublish: $(buildartifact$directory)"
+artifactname: $(buildrepository.name):$build.buildid)'
+displayname: "publish artifact"
+
+
+
+task: sonarQube
+displayname: "prepare analysis as sonar"
+sonarQube: 171
+config: 'false'
+
+
+
+
+task:sonarsource sonarQube
+displayname: "runcodeanalysis"
+
+
